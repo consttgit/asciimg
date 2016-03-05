@@ -4,7 +4,8 @@ This is a simple console app used to convert images into ASCII text.
 
 ### Usage
 
-`$ ./asciimg.py --help
+```
+$ ./asciimg.py --help
 usage: asciimg.py [-h] [-w WIDTH] image
 
 asciimg - convert image into ASCII text.
@@ -16,7 +17,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -w WIDTH, --width WIDTH
                         ascii width (char) 
-`
+```
 
 ### Dependencies
 
