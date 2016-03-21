@@ -5,8 +5,7 @@ import argparse
 from PIL import Image
 
 
-ASCII_GREY_SCALE = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvun' \
-                   'xrjft/\|()1{}[]?-_+~<>i!lI;:,"^`\'. '
+ASCII_GREY_SCALE = '$@B8#%&WMX0QOLZ|?+;:~-"^\'_,. '
 
 
 def scale_img(img, new_width):
@@ -46,7 +45,12 @@ def main():
                         help='ascii width (char)')
     args = parser.parse_args()
 
-    img = Image.open(args.image)
+    try:
+        img = Image.open(args.image)
+    except FileNotFoundError as e:
+        print('Error:', e)
+        return
+
     img_gray = scale_img(img, new_width=args.width).convert('L')
     img_ascii = img_to_ascii(img_gray)
 
