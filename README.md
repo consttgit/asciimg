@@ -19,6 +19,10 @@ optional arguments:
                         ascii width (char) 
 ```
 
+Example:
+
+![](./kitty.png)
+
 ### Dependencies
 
 It depends on `python3-pil` package (Python Imaging Library).
