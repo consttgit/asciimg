@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
 """asciimg - convert image into ASCII text.
 """
+import sys
 import argparse
 from PIL import Image
 
 
 ASCII_GREY_SCALE = '$@B8#%&WMX0QOLZ|?+;:~-"^\'_,. '
+
+
+def get_args():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('image', help='image file')
+    parser.add_argument('-w', '--width', type=int, default=79,
+                        help='ascii width (char)')
+    return parser.parse_args()
 
 
 def scale_img(img, new_width):
@@ -39,17 +48,13 @@ def img_to_ascii(img):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('image', help='image file')
-    parser.add_argument('-w', '--width', type=int, default=79,
-                        help='ascii width (char)')
-    args = parser.parse_args()
+    args = get_args()
 
     try:
         img = Image.open(args.image)
     except FileNotFoundError as e:
         print('Error:', e)
-        return
+        sys.exit(-1)
 
     img_gray = scale_img(img, new_width=args.width).convert('L')
     img_ascii = img_to_ascii(img_gray)
