@@ -18,29 +18,23 @@ def get_args():
 
 
 def scale_img(img, new_width):
-    width, height  = img.size
-    aspect_ratio = width / height
+    aspect_ratio = img.width / img.height
     new_height = round(new_width / aspect_ratio * 0.5)
     return img.resize((new_width, new_height))
 
 
 def get_char(index):
-    min_i = 0
-    max_i = len(ASCII_GREY_SCALE) - 1
-    if index < min_i:
-        return ASCII_GREY_SCALE[min_i]
-    elif index > max_i:
-        return ASCII_GREY_SCALE[max_i]
-    else:
-        return ASCII_GREY_SCALE[index]
+    min_i, max_i = 0, len(ASCII_GREY_SCALE) - 1
+    i = max(min_i, min(index, max_i))
+    char = ASCII_GREY_SCALE[i]
+    return char
     
 
 def img_to_ascii(img):
-    width, height = img.size
     coeff = len(ASCII_GREY_SCALE) / 255
     ascii_chars = []
-    for i in range(height):
-        for j in range(width):
+    for i in range(img.height):
+        for j in range(img.width):
             index = round(img.getpixel((j, i)) * coeff)
             ascii_chars.append(get_char(index))
         ascii_chars.append('\n')
@@ -56,11 +50,14 @@ def main():
         print('Error:', e)
         sys.exit(-1)
 
-    img_gray = scale_img(img, new_width=args.width).convert('L')
-    img_ascii = img_to_ascii(img_gray)
+    img_gray = img.convert('L')
+    img_scaled = scale_img(img_gray, new_width=args.width)
+    img_ascii = img_to_ascii(img_scaled)
 
     print(img_ascii)
 
 
 if __name__ == '__main__':
     main()
+
+
