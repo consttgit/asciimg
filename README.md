@@ -25,7 +25,11 @@ Example:
 
 ### Dependencies
 
-It depends on `python3-pil` package (Python Imaging Library).
+* [Pillow](https://python-pillow.org/). The easiest way to install it is to use `pip`:
+
+```
+$ sudo -H pip3 install Pillow
+```
 
 ### License
 
