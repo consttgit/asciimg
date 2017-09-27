@@ -11,16 +11,18 @@ def img_to_ascii(filename, width, contrast=1.0):
     img_scaled = scale_img(img_enhanced, new_width=width)
 
     coeff = len(ASCII_GREY_SCALE) / 255
-    ascii_chars = []
+    ascii_rows = []
 
     for i in range(img_scaled.height):
+        chars = []
+
         for j in range(img_scaled.width):
             index = round(img_scaled.getpixel((j, i)) * coeff)
-            ascii_chars.append(get_char(index))
+            chars.append(get_char(index))
 
-        ascii_chars.append('\n')
+        ascii_rows.append(''.join(chars))
 
-    return ''.join(ascii_chars)
+    return '\n'.join(ascii_rows)
 
 
 def scale_img(img, new_width):

@@ -44,7 +44,7 @@ def page_generator(img_ascii, width, height):
 def txt_to_arr(txt):
     txt_arr = []
 
-    for line in txt[:-1].split('\n'):
+    for line in txt.split('\n'):
         txt_arr.append([char for char in line])
 
     return np.array(txt_arr)

@@ -21,10 +21,10 @@ def get_args():
     parser.add_argument('-c', '--contrast', type=float, default=1.0,
                         help='contrast coefficient (min 0.)')
     parser.add_argument('-p', '--print', action='store_true',
-                        help='split ascii image into files for print')
+                        help='split ascii image into files to print on paper')
     parser.add_argument('--page-width', type=int, default=75,
                         help='page width (char); use with --print')
-    parser.add_argument('--page-height', type=int, default=150,
+    parser.add_argument('--page-height', type=int, default=55,
                         help='page height (char); use with --print')
     parser.add_argument('-v', '--version', action='version',
                         version=asciimg.__version__,
