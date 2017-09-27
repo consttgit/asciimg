@@ -15,7 +15,11 @@ def get_args():
     parser.add_argument('-w', '--width', type=int, default=79,
                         help='ascii width (char)')
     parser.add_argument('-p', '--print', action='store_true',
-                        help='plot the resulting ascii text')
+                        help='split ascii image into files for print')
+    parser.add_argument('--page-width', type=int, default=75,
+                        help='page width (char); use with --print')
+    parser.add_argument('--page-height', type=int, default=150,
+                        help='page height (char); use with --print')
     parser.add_argument('-v', '--version', action='version',
                         version=asciimg.__version__,
                         help='show the version number and exit')
@@ -32,7 +36,10 @@ def main():
         print('Error: {}'.format(e), file=sys.stderr)
         sys.exit(-1)
 
-    print(img_ascii)
+    if args.print:
+        img_print(img_ascii, args.image, args.page_width, args.page_height)
+    else:
+        print(img_ascii)
 
 
 if __name__ == '__main__':

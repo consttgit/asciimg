@@ -1,19 +1,18 @@
 from PIL import Image
 
-from .constants import ASCII_GREY_SCALE
+from .constants import ASCII_GREY_SCALE, SCALE_HEIGHT_COEFF
 
 
 def scale_img(img, new_width):
     aspect_ratio = img.width / img.height
-    new_height = round(new_width / aspect_ratio * 0.5)
+    new_height = round(new_width / aspect_ratio * SCALE_HEIGHT_COEFF)
     return img.resize((new_width, new_height))
 
 
 def get_char(index):
     min_i, max_i = 0, len(ASCII_GREY_SCALE) - 1
     i = max(min_i, min(index, max_i))
-    char = ASCII_GREY_SCALE[i]
-    return char
+    return ASCII_GREY_SCALE[i]
 
 
 def img_to_ascii(filename, width):

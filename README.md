@@ -4,36 +4,25 @@ This is a simple console app used to convert images into ASCII text.
 
 ### Usage
 
-```
-$ ./asciimg.py --help
-usage: asciimg.py [-h] [-w WIDTH] image
+TODO
 
-asciimg - convert image into ASCII text.
-
-positional arguments:
-  image                 image file
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -w WIDTH, --width WIDTH
-                        ascii width (char) 
-```
-
-Example:
+### Example:
 
 ![](./kitty.png)
 
 ### Dependencies
 
-* [Pillow](https://python-pillow.org/). The easiest way to install it is to use `pip`:
+* [Pillow](https://python-pillow.org/)
+* [NumPy](http://www.numpy.org)
 
+Use `pip` to install them:
 ```
-$ sudo -H pip3 install Pillow
+$ pip3 install --user pillow numpy
 ```
 
 ### License
 
-This software is distributed under the terms of the [WTFPL](http://www.wtfpl.net/about/):
+This software is distributed under the terms of the [WTFPL](http://www.wtfpl.net/about/) :)
 
 ```
             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
@@ -50,3 +39,4 @@ This software is distributed under the terms of the [WTFPL](http://www.wtfpl.net
 
   0. You just DO WHAT THE FUCK YOU WANT TO.
 ```
+

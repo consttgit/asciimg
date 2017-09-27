@@ -1,2 +1,3 @@
 ASCII_GREY_SCALE = '$@B8#%&WMX0QOLZ|?+;:~-"^\'_,. '
+SCALE_HEIGHT_COEFF = 0.5
 
