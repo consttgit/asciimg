@@ -28,16 +28,19 @@ def img_to_ascii(filename, width, contrast=1.0):
 def scale_img(img, new_width):
     aspect_ratio = img.width / img.height
     new_height = round(new_width / aspect_ratio * SCALE_HEIGHT_COEFF)
+
     return img.resize((new_width, new_height))
 
 
 def enhance_contrast(img, contrast):
     enhancer = ImageEnhance.Contrast(img)
+
     return enhancer.enhance(contrast)
 
 
 def get_char(index):
     min_i, max_i = 0, len(ASCII_GREY_SCALE) - 1
     i = max(min_i, min(index, max_i))
+
     return ASCII_GREY_SCALE[i]
 
